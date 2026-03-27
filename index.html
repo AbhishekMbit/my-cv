@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhishek Kumar Yadav | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0f172a; --text:#ffffff; --muted:#94a3b8; --card:#1e293b; --accent:#22c55e; --glass:rgba(15,23,42,0.7);
+}
+body.light{
+  --bg:#f8fafc; --text:#0f172a; --muted:#475569; --card:#ffffff; --accent:#16a34a; --glass:rgba(255,255,255,0.7);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:var(--bg);color:var(--text);overflow-x:hidden;transition:.3s}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 8%;position:fixed;width:100%;z-index:1000;background:var(--glass);backdrop-filter:blur(10px)}
+.logo{font-size:22px;color:var(--accent);font-weight:600}
+nav a{margin:0 15px;color:var(--text);text-decoration:none;position:relative}
+nav a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--accent);transition:.3s}
+nav a:hover::after{width:100%}
+
+.theme-toggle{cursor:pointer;padding:8px 12px;border-radius:8px;background:var(--accent);color:#fff;border:none}
+
+.hero{height:100vh;display:flex;align-items:center;justify-content:space-between;padding:0 8%}
+.text h1{font-size:48px}
+.text span{color:var(--accent)}
+.text p{margin:10px 0;color:var(--muted)}
+
+.btn{padding:12px 25px;background:var(--accent);border:none;border-radius:8px;cursor:pointer;color:white;transition:.3s}
+.btn:hover{transform:scale(1.1);box-shadow:0 0 20px var(--accent)}
+
+.image{width:350px;height:350px;position:relative;perspective:1000px}
+.slider{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 1s}
+.slide{position:absolute;width:100%;height:100%;border-radius:20px;overflow:hidden;box-shadow:0 0 30px var(--accent);transition:.5s}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide:hover{transform:scale(1.1)}
+.slide:nth-child(1){transform:rotateY(0deg) translateZ(200px)}
+.slide:nth-child(2){transform:rotateY(72deg) translateZ(200px)}
+.slide:nth-child(3){transform:rotateY(144deg) translateZ(200px)}
+.slide:nth-child(4){transform:rotateY(216deg) translateZ(200px)}
+.slide:nth-child(5){transform:rotateY(288deg) translateZ(200px)}
+
+.controls{position:absolute;width:100%;top:50%;display:flex;justify-content:space-between;transform:translateY(-50%)}
+.controls button{background:rgba(0,0,0,0.6);border:none;color:white;padding:10px;border-radius:50%;cursor:pointer}
+.controls button:hover{background:var(--accent)}
+
+.dots{position:absolute;bottom:-30px;width:100%;text-align:center}
+.dot{display:inline-block;width:10px;height:10px;margin:5px;background:#555;border-radius:50%;cursor:pointer}
+.dot.active{background:var(--accent)}
+
+section{padding:100px 8%}
+
+/* ALL HEADINGS GREEN */
+h1, h2, h3 {
+  color: var(--accent);
+}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:var(--card);padding:20px;border-radius:15px;transition:.3s;opacity:0;transform:translateY(50px)}
+.card.show{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-10px) scale(1.05);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+
+/* REMOVE HOVER EFFECT IN CONTACT SECTION */
+#contact .card{
+    font-size:18px;
+    font-weight:500;
+    letter-spacing:0.5px;
+</html>
