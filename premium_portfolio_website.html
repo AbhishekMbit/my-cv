@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhishek Kumar Yadav | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0f172a; --text:#ffffff; --muted:#94a3b8; --card:#1e293b; --accent:#22c55e; --glass:rgba(15,23,42,0.7);
+}
+body.light{
+  --bg:#f8fafc; --text:#0f172a; --muted:#475569; --card:#ffffff; --accent:#16a34a; --glass:rgba(255,255,255,0.7);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:var(--bg);color:var(--text);overflow-x:hidden;transition:.3s}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 8%;position:fixed;width:100%;z-index:1000;background:var(--glass);backdrop-filter:blur(10px)}
+.logo{font-size:22px;color:var(--accent);font-weight:600}
+nav a{margin:0 15px;color:var(--text);text-decoration:none;position:relative}
+nav a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--accent);transition:.3s}
+nav a:hover::after{width:100%}
+
+.theme-toggle{cursor:pointer;padding:8px 12px;border-radius:8px;background:var(--accent);color:#fff;border:none}
+
+.hero{height:100vh;display:flex;align-items:center;justify-content:space-between;padding:0 8%}
+.text h1{font-size:48px}
+.text span{color:var(--accent)}
+.text p{margin:10px 0;color:var(--muted)}
+
+.btn{padding:12px 25px;background:var(--accent);border:none;border-radius:8px;cursor:pointer;color:white;transition:.3s}
+.btn:hover{transform:scale(1.1);box-shadow:0 0 20px var(--accent)}
+
+.image{width:350px;height:350px;position:relative;perspective:1000px}
+.slider{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 1s}
+.slide{position:absolute;width:100%;height:100%;border-radius:20px;overflow:hidden;box-shadow:0 0 30px var(--accent);transition:.5s}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide:hover{transform:scale(1.1)}
+.slide:nth-child(1){transform:rotateY(0deg) translateZ(200px)}
+.slide:nth-child(2){transform:rotateY(72deg) translateZ(200px)}
+.slide:nth-child(3){transform:rotateY(144deg) translateZ(200px)}
+.slide:nth-child(4){transform:rotateY(216deg) translateZ(200px)}
+.slide:nth-child(5){transform:rotateY(288deg) translateZ(200px)}
+
+.controls{position:absolute;width:100%;top:50%;display:flex;justify-content:space-between;transform:translateY(-50%)}
+.controls button{background:rgba(0,0,0,0.6);border:none;color:white;padding:10px;border-radius:50%;cursor:pointer}
+.controls button:hover{background:var(--accent)}
+
+.dots{position:absolute;bottom:-30px;width:100%;text-align:center}
+.dot{display:inline-block;width:10px;height:10px;margin:5px;background:#555;border-radius:50%;cursor:pointer}
+.dot.active{background:var(--accent)}
+
+section{padding:100px 8%}
+
+/* ALL HEADINGS GREEN */
+h1, h2, h3 {
+  color: var(--accent);
+}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:var(--card);padding:20px;border-radius:15px;transition:.3s;opacity:0;transform:translateY(50px)}
+.card.show{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-10px) scale(1.05);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+
+/* REMOVE HOVER EFFECT IN CONTACT SECTION */
+#contact .card{
+    font-size:18px;
+    font-weight:500;
+    letter-spacing:0.5px;
+    transition:none;
+    transform:none;
+}
+#contact .card:hover{
+    transform:none;
+    box-shadow:none;
+}
+
+footer{text-align:center;padding:20px;background:var(--card)}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">Sagar Constructions</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#education">Education</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+</nav>
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+</header>
+
+<section id="home" class="hero">
+<div class="text">
+<h3>Hello I'm</h3>
+<h1><span>Abhishek Kumar<br> Yadav</span></h1>
+<p>Safety Officer | Industrial Safety Professional</p>
+<p>📞 7667617965</p>
+<p>📧 abhimbit76@gmail.com</p>
+<a href="Abhishek_Kumar_Yadav_CV.pdf" download>
+<button class="btn">Download CV</button>
+</a>
+</div>
+
+<div class="image">
+<div class="slider" id="slider">
+<div class="slide"><img src="img1.jpeg"></div>
+<div class="slide"><img src="img2.jpeg"></div>
+<div class="slide"><img src="img3.jpeg"></div>
+<div class="slide"><img src="img4.jpeg"></div>
+<div class="slide"><img src="img5.jpeg"></div>
+</div>
+<div class="controls">
+<button onclick="prevSlide()">❮</button>
+<button onclick="nextSlide()">❯</button>
+</div>
+<div class="dots" id="dots"></div>
+</div>
+</section>
+
+<section id="about">
+<h2>About Me & Responsibilities</h2>
+<p>Dedicated Safety Officer with hands-on experience in construction site safety, risk assessment, and compliance with industrial safety standards.</p>
+<br>
+<div class="cards">
+<div class="card">Hazard Identification & Risk Assessment</div>
+<div class="card">Accident / Incident Investigation</div>
+<div class="card">PPE Inspection & Safety Compliance</div>
+<div class="card">Daily Toolbox Talks & Training</div>
+<div class="card">Fire Safety & Equipment Inspection</div>
+<div class="card">Work Permit & Lift Plan Preparation</div>
+<div class="card">Scaffolding & Fall Protection Checks</div>
+<div class="card">Work at Height & Confined Space Safety</div>
+<div class="card">Monitoring Safe Work Practices</div>
+</div>
+</section>
+
+<section id="education">
+<h2>Education Details</h2>
+<div class="cards">
+<div class="card">ADIS (Industrial Safety) - 85%<br>Patel Institute, Bihar (2024)</div>
+<div class="card">B.Tech (CSE) - 71.69%<br>Bihar Engineering University (2023)</div>
+<div class="card">12th - 70.4%<br>BSEB Patna (2019)</div>
+<div class="card">10th - 76%<br>BSEB Patna (2017)</div>
+</div>
+</section>
+
+<section id="experience">
+<h2>Experience</h2>
+<div class="cards">
+<div class="card">
+<strong>Safety Officer</strong><br>
+Sagar Construction Pvt. Ltd.<br>
+📅 20 May 2024 - Present
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Details</h2>
+<div class="">
+<div class="">👤 Name: Abhishek Kumar Yadav</div>
+<div class="">📞 Phone: 7667617965</div>
+<div class="">📧 Email: abhimbit76@gmail.com</div>
+</div>
+</section>
+
+<footer><p>© 2026 Abhishek Kumar Yadav</p></footer>
+
+<script>
+// theme toggle
+function toggleTheme(){
+ document.body.classList.toggle('light');
+ localStorage.setItem('theme',document.body.classList.contains('light')?'light':'dark');
+}
+
+// load saved theme
+if(localStorage.getItem('theme')==='light'){document.body.classList.add('light')}
+
+// smooth scroll
+document.querySelectorAll('a').forEach(a=>{
+ a.addEventListener('click',e=>{
+  let id=a.getAttribute('href');
+  if(id.startsWith('#')){
+   let el=document.querySelector(id);
+   if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'})}
+  }
+ })
+})
+
+// scroll animation
+window.addEventListener('scroll',()=>{
+ document.querySelectorAll('.card').forEach(c=>{
+  if(c.getBoundingClientRect().top < window.innerHeight-50){c.classList.add('show')}
+ })
+});
+window.dispatchEvent(new Event('scroll'));
+
+// slider
+let angle=0; const slider=document.getElementById('slider'); const total=5;
+function update(){slider.style.transform=`rotateY(${angle}deg)`;updateDots()}
+function nextSlide(){angle-=72;update()}
+function prevSlide(){angle+=72;update()}
+let auto=setInterval(nextSlide,3000);
+slider.addEventListener('mouseenter',()=>clearInterval(auto));
+slider.addEventListener('mouseleave',()=>auto=setInterval(nextSlide,3000));
+
+const dots=document.getElementById('dots');
+for(let i=0;i<total;i++){let d=document.createElement('span');d.className='dot';d.onclick=()=>{angle=-72*i;update()};dots.appendChild(d)}
+function updateDots(){let index=Math.abs(angle/72)%total;document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===index))}
+update();
+</script>
+
+</body>
+</html>
